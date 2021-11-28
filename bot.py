@@ -1,5 +1,4 @@
 import os
-import telegram
 from telegram.ext import Updater, MessageHandler, Filters
 
 
@@ -17,11 +16,7 @@ def procesar_mensajes(update, context):
 
 if __name__ == '__main__':
 
-    token = os.environ['TOKEN']
-
-    bot = telegram.Bot(token=token)
-
-    updater = Updater(token=token, use_context=True)
+    updater = Updater(token=os.environ['TOKEN'], use_context=True)
 
     dp =updater.dispatcher
     dp.add_handler(MessageHandler(filters=Filters.text, callback=procesar_mensajes))
